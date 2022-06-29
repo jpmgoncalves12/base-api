@@ -1,11 +1,11 @@
 import express from "express";
 
-import GenerateAuthController from "../Domains/Auth/Http/Controllers/GenerateAuthController";
+import LoginAuthController from "../Domains/Auth/Http/Controllers/LoginAuthController";
 
 const router = express.Router();
 
-router.get('/generate', (req, res) => {
-	return new GenerateAuthController().process(req, res)
+router.post('/login', (req, res) => {
+	return new LoginAuthController().process(req, res)
 });
 
 export default router;

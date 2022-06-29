@@ -12,8 +12,7 @@ class AuthenticateJwtMiddleware {
 		res: Response,
 		next: NextFunction
 	) => {
-		console.log(this);
-		let token = this.hasToken(req);
+		const token = this.hasToken(req);
 
 		if (!token) {
 			return formatResponseError(res, 'No token provided!', 403);
@@ -24,7 +23,7 @@ class AuthenticateJwtMiddleware {
 			return formatResponseError(res, 'Internal Server Error', 500)
 		}
 
-		verify(token, getToken, (err: any, decoded: any) => {
+		verify(token, secret, (err: any, decoded: any) => {
 			if (err) {
 				return formatResponseError(res, "Unauthorized!", 401)
 			}

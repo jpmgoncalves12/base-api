@@ -8,5 +8,5 @@ app.use(express.json());
 app.use('/', router);
 
 app.listen(8080, function () {
-  console.log("Api started succes! Listening in port 8080!");
+	console.log("Api started succes! Listening in port 8080!");
 });

@@ -6,8 +6,11 @@ import AuthRoutes from './AuthRoutes'
 
 const router = express.Router();
 
-router.use('/auth', AuthenticateJwtMiddleware.verifyToken, AuthRoutes);
+router.use('/auth', AuthRoutes);
 
-router.use('/calendar', ScheduleRoutes);
+// MiddWare Use Example
+// router.use('/auth', AuthenticateJwtMiddleware.verifyToken, AuthRoutes);
+
+router.use('/calendar', AuthenticateJwtMiddleware.verifyToken, ScheduleRoutes);
 
 export default router;

@@ -2,7 +2,7 @@ import { Response } from 'express';
 
 export function formatResponseSuccess(
 	res: Response,
-	data: String,
+	data: String | object,
 	message = 'Success',
 	status = 200
 ) {
