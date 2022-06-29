@@ -1,5 +1,6 @@
-import getenv from "getenv.ts";
+import dotenv from "dotenv"
+dotenv.config()
 
 export function getToken() {
-	return getenv.string("SECRET") ?? '';
+	return process.env.SECRET ?? '';
 }

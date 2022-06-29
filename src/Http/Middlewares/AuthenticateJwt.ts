@@ -7,7 +7,12 @@ import { getToken } from '../../Configs/TokenConfig'
 class AuthenticateJwtMiddleware {
 	constructor() { }
 
-	verifyToken(req: Request, res: Response, next: NextFunction) {
+	verifyToken = (
+		req: Request,
+		res: Response,
+		next: NextFunction
+	) => {
+		console.log(this);
 		let token = this.hasToken(req);
 
 		if (!token) {
