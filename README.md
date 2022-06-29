@@ -8,10 +8,10 @@ How works the Folders structure:
 The Features/EndPoints stay at the Domains Folder
 
 ##Patterns
-```
-The Folders has create based at [Ala](https://github.com/kiwfy/ala-microservice) patterns, we Have a Folder called Domain an We'll include our Feature/EndPoint in there. Indide of them, we have:
-	**Business**: Bussines Rules
 
+The Folders has create based at [Ala](https://github.com/kiwfy/ala-microservice) patterns, we Have a Folder called Domain an We'll include our Feature/EndPoint in there. Indide of them, we have:
+```
+	**Business**: Bussines Rules
 	**Http**:
 		_Controllers_: Feature Controllers
 		_Filters_: Requests Feature Filters
