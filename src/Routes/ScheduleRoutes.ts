@@ -4,7 +4,7 @@ import AddScheduleController from "../Domains/Schedule/Http/Controllers/AddSched
 const router = express.Router();
 
 router.get('/', (req, res) => {
-	return new AddScheduleController().execute(req, res)
+	return new AddScheduleController().process(req, res)
 });
 
 export default router;

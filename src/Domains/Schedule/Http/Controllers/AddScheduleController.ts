@@ -1,20 +1,10 @@
 import { Request, Response } from 'express';
 import BaseController from '../../../../Http/Controllers/BaseController';
+import AddScheduleBusiness from '../../Business/AddScheduleBussines';
 
-class AddScheduleController extends BaseController{
-	constructor() {
-		super();
-	}
-
-	execute(
-		req: Request,
-		res: Response
-	) {
-		return this.formatResponseSuccess(
-			res,
-			'teste',
-			'message'
-		);
+class AddScheduleController extends BaseController {
+	process(req: Request, res: Response) {
+		return new AddScheduleBusiness().process(req, res);
 	}
 }
 
