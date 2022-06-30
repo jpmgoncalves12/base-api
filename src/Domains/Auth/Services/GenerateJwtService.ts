@@ -1,10 +1,10 @@
-import { sign, SignOptions } from 'jsonwebtoken';
-import { getToken } from '../../../Configs/TokenConfig'
+import { sign } from 'jsonwebtoken';
+import getToken from '../../../Configs/TokenConfig';
 
-export function generateJwtService(
-	payload: object
+export default function generateJwtService(
+  payload: object,
 ) {
-	const token = getToken();
+  const token = getToken();
 
-	return sign(payload, token) ?? '';
-};
+  return sign(payload, token) ?? '';
+}

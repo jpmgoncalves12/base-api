@@ -1,9 +1,7 @@
 class BaseController {
-	constructor() { }
-
-	clearArrayFields(){
-		return '';
-	}
+  clearArrayFields() {
+    return '';
+  }
 }
 
 export default BaseController;

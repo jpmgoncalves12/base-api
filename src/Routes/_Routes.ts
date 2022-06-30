@@ -1,8 +1,8 @@
-import express from "express";
+import express from 'express';
 import AuthenticateJwtMiddleware from '../Http/Middlewares/AuthenticateJwt';
 
-import ScheduleRoutes from './ScheduleRoutes'
-import AuthRoutes from './AuthRoutes'
+import ScheduleRoutes from './ScheduleRoutes';
+import AuthRoutes from './AuthRoutes';
 
 const router = express.Router();
 

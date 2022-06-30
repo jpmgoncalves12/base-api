@@ -1,6 +1,7 @@
-import dotenv from "dotenv"
-dotenv.config()
+import dotenv from 'dotenv';
 
-export function getToken() {
-	return process.env.SECRET ?? '';
+dotenv.config();
+
+export default function getToken() {
+  return process.env.SECRET ?? '';
 }
