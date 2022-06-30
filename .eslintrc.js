@@ -18,5 +18,7 @@ module.exports = {
     'import/extensions': 'off',
     'class-methods-use-this': 'off',
     'import/no-unresolved': 'off',
+    'default-param-last': 'off',
+    'operator-linebreak': ['error', 'after'],
   },
 };

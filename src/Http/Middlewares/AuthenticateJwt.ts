@@ -1,7 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { verify } from 'jsonwebtoken';
 
-import { formatResponseError } from '../../Utils/response.utils';
+import { formatResponseError } from '../../Utils/ResponseUtils';
 import getToken from '../../Configs/TokenConfig';
 
 // eslint-disable-next-class consistent-return
@@ -10,7 +10,7 @@ class AuthenticateJwtMiddleware {
     req: Request,
     res: Response,
     next: NextFunction,
-  // eslint-disable-next-line consistent-return
+    // eslint-disable-next-line consistent-return
   ) => {
     const token = this.hasToken(req);
 
@@ -23,13 +23,14 @@ class AuthenticateJwtMiddleware {
       return formatResponseError(res, 'Internal Server Error', 500);
     }
 
+    // eslint-disable-next-line consistent-return
     verify(token, secret, (err) => {
       if (err) {
         return formatResponseError(res, 'Unauthorized!', 401);
       }
-    });
 
-    next();
+      next();
+    });
   };
 
   hasToken(req: Request): string {

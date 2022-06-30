@@ -1,20 +1,28 @@
 import { Request, Response } from 'express';
 import BaseBusiness from '../../../Business/BaseBusiness';
 import generateJwtService from '../Services/GenerateJwtService';
-import { formatResponseSuccess, formatResponseError } from '../../../Utils/response.utils';
+import { formatResponseSuccess, formatResponseError } from '../../../Utils/ResponseUtils';
+import LoginAuthValidators from '../Http/Validators/LoginAuthValidators';
 
 class LoginAuthBusiness extends BaseBusiness {
   process(req: Request, res: Response) {
     const payload = {
-      name: 'João Pedro',
-      ulid: '01G6PGK4DQXKP8FRJGXH2VJCY7',
-      accessTypes: [
-        'getTeams',
-        'addTeams',
-        'updateTeams',
-        'deleteTeams',
-      ],
+      email: 'email@email.com',
+      password: 'teste123',
     };
+
+    const valid = LoginAuthValidators.process(
+      payload.email,
+      payload.password,
+    );
+
+    if (!valid) {
+      return formatResponseError(
+        res,
+        'Bad Request! Invalid fields Format!',
+        400,
+      );
+    }
 
     const token = generateJwtService(payload);
 
