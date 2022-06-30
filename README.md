@@ -17,9 +17,9 @@ The Folders has create based at [Ala](https://github.com/kiwfy/ala-microservice)
 
 	Http:
 		Controllers: Feature Controllers
-		Filters: Requests Feature Filters
-		Parameters: DataBase Parameters
-		Validators: Validation to use at
+		Filters: Requests Feature Filters and Call Validator
+		Parameters: DataBase Params
+		Validators: Validation fields
 
 	Repositores: Our DataBase sctructure
 
