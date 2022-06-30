@@ -2,30 +2,22 @@ import { Request, Response } from 'express';
 import BaseBusiness from '../../../Business/BaseBusiness';
 import generateJwtService from '../Services/GenerateJwtService';
 import { formatResponseSuccess, formatResponseError } from '../../../Utils/ResponseUtils';
-import LoginAuthValidators from '../Http/Validators/LoginAuthValidators';
 
 class LoginAuthBusiness extends BaseBusiness {
   process(req: Request, res: Response) {
+    // Todo: Login Valition First
     const payload = {
-      email: 'email@email.com',
-      password: 'teste123',
+      context: {
+        user: {
+          ulid: '01G6S52KF72D3GZEK104A6FTZ4',
+          displayName: 'João',
+          fullName: 'João Pedro Martins Gonçalves',
+        },
+        roles: ['admin', 'finalUser'],
+      },
     };
 
-    const valid = LoginAuthValidators.process(
-      payload.email,
-      payload.password,
-    );
-
-    if (!valid) {
-      return formatResponseError(
-        res,
-        'Bad Request! Invalid fields Format!',
-        400,
-      );
-    }
-
     const token = generateJwtService(payload);
-
     if (!token) {
       return formatResponseError(
         res,
@@ -34,11 +26,13 @@ class LoginAuthBusiness extends BaseBusiness {
       );
     }
 
+    // Todo: ValidUntil
     const data = {
       Token: token,
+      ValidUntil: 'timestamp',
     };
 
-    return formatResponseSuccess(res, data, 'Succes');
+    return formatResponseSuccess(res, data, 'Success Login!');
   }
 }
 

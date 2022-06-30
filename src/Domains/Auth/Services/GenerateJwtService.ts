@@ -6,5 +6,10 @@ export default function generateJwtService(
 ) {
   const token = getToken();
 
-  return sign(payload, token) ?? '';
+  if (!token) {
+    return '';
+  }
+
+  // Todo: needs to encripty payload
+  return sign(payload, token);
 }
