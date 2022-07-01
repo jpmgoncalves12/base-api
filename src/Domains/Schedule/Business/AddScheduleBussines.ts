@@ -5,7 +5,9 @@ import { formatResponseSuccess } from '../../../Utils/ResponseUtils';
 class AddScheduleBusiness extends BaseBusiness {
   process(req: Request, res: Response) {
     // Here Is my Bussines Rule
-    return formatResponseSuccess(res, 'abacate');
+    const data = { 'return title': 'abacate' };
+
+    return formatResponseSuccess(res, data);
   }
 }
 

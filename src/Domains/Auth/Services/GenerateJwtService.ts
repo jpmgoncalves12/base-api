@@ -1,4 +1,4 @@
-import { sign } from 'jsonwebtoken';
+import { sign, SignOptions } from 'jsonwebtoken';
 import getToken from '../../../Configs/TokenConfig';
 
 export default function generateJwtService(
@@ -10,6 +10,10 @@ export default function generateJwtService(
     return '';
   }
 
+  const signInOptions: SignOptions = {
+    expiresIn: '3h',
+  };
+
   // Todo: needs to encripty payload
-  return sign(payload, token);
+  return sign(payload, token, signInOptions);
 }

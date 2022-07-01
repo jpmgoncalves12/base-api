@@ -2,10 +2,21 @@ import { Request, Response } from 'express';
 import BaseBusiness from '../../../Business/BaseBusiness';
 import generateJwtService from '../Services/GenerateJwtService';
 import { formatResponseSuccess, formatResponseError } from '../../../Utils/ResponseUtils';
+import encriptyPasswordService from '../Services/EncriptyPasswordService';
 
 class LoginAuthBusiness extends BaseBusiness {
   process(req: Request, res: Response) {
     // Todo: Login Valition First
+    const pass = encriptyPasswordService(req.body.password);
+
+    if (!pass) {
+      return formatResponseError(
+        res,
+        'Try Again Later',
+        500,
+      );
+    }
+
     const payload = {
       context: {
         user: {
@@ -26,12 +37,7 @@ class LoginAuthBusiness extends BaseBusiness {
       );
     }
 
-    // Todo: ValidUntil
-    const data = {
-      Token: token,
-      ValidUntil: 'timestamp',
-    };
-
+    const data = { Token: token };
     return formatResponseSuccess(res, data, 'Success Login!');
   }
 }

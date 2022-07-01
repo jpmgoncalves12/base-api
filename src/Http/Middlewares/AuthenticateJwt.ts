@@ -12,20 +12,24 @@ class AuthenticateJwtMiddleware {
     next: NextFunction,
     // eslint-disable-next-line consistent-return
   ) => {
-    const token = this.hasToken(req);
+    const token = this.getReqAuthorization(req);
 
     if (!token) {
       return formatResponseError(res, 'No token provided!', 403);
     }
 
-    const secret = getToken();
-    if (!secret) {
+    const tokenSignature = getToken();
+    if (!tokenSignature) {
       return formatResponseError(res, 'Internal Server Error', 500);
     }
 
     // eslint-disable-next-line consistent-return
-    verify(token, secret, (err) => {
+    verify(token, tokenSignature, (err) => {
       if (err) {
+        if (err.name === 'TokenExpiredError') {
+          return formatResponseError(res, 'Expired Token!', 401);
+        }
+
         return formatResponseError(res, 'Unauthorized!', 401);
       }
 
@@ -33,7 +37,7 @@ class AuthenticateJwtMiddleware {
     });
   };
 
-  hasToken(req: Request): string {
+  getReqAuthorization(req: Request): string {
     let token = req.headers.authorization ?? '';
 
     if (!token) {
