@@ -1,22 +1,17 @@
+import { Request } from 'express';
 import LoginAuthValidators from '../../Http/Validators/LoginAuthValidators';
 
 class LoginAuthFilter {
   process(
-    data: {
-      email: string,
-      password: string
-    },
+    req: Request,
   ): boolean {
-    const valid = LoginAuthValidators.process(
-      data.email,
-      data.password,
+    const email = req.body.email ?? '';
+    const password = req.body.password ?? '';
+
+    return LoginAuthValidators.process(
+      email,
+      password,
     );
-
-    if (!valid) {
-      return false;
-    }
-
-    return true;
   }
 }
 

@@ -8,13 +8,8 @@ class LoginAuthBusiness extends BaseBusiness {
   process(req: Request, res: Response) {
     // Todo: Login Valition First
     const pass = encriptyPasswordService(req.body.password);
-
     if (!pass) {
-      return formatResponseError(
-        res,
-        'Try Again Later',
-        500,
-      );
+      return formatResponseError(res, 'Try Again Later!', 500);
     }
 
     const payload = {
@@ -30,11 +25,7 @@ class LoginAuthBusiness extends BaseBusiness {
 
     const token = generateJwtService(payload);
     if (!token) {
-      return formatResponseError(
-        res,
-        'Try Again Later',
-        500,
-      );
+      return formatResponseError(res, 'Try Again Later', 500);
     }
 
     const data = { Token: token };

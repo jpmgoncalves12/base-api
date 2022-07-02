@@ -9,6 +9,8 @@ Starting your docker
 How works the Folders structure:
 The Features/EndPoints stay at the Domains Folder
 
+sudo chmod -R 777 ./storage
+
 ## Patterns
 
 The Folders has create based at [Ala](https://github.com/kiwfy/ala-microservice) patterns, we Have a Folder called Domain an We'll include our Feature/EndPoint in there. Indide of them, we have:
