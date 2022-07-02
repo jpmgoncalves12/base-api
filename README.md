@@ -13,7 +13,7 @@ sudo chmod -R 777 ./storage
 
 ## Patterns
 
-The Folders has create based at [Ala](https://github.com/kiwfy/ala-microservice) patterns, we Have a Folder called Domain an We'll include our Feature/EndPoint in there. Indide of them, we have:
+The Folders has create based at [Ala](https://github.com/kiwfy/ala-microservice) patterns, we Have a Folder called Domain an We'll include our Feature/EndPoint in there. Inside of them, we have:
 ```
 	Business: Bussines Rules
 
