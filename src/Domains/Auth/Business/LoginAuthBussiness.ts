@@ -3,10 +3,12 @@ import BaseBusiness from '../../../Business/BaseBusiness';
 import generateJwtService from '../Services/GenerateJwtService';
 import { formatResponseSuccess, formatResponseError } from '../../../Utils/ResponseUtils';
 import encriptyPasswordService from '../Services/EncriptyPasswordService';
+import LoginRepositores from '../Repositores/LoginRepositores';
 
 class LoginAuthBusiness extends BaseBusiness {
   process(req: Request, res: Response) {
-    // Todo: Login Valition First
+    LoginRepositores.getBtId();
+
     const pass = encriptyPasswordService(req.body.password);
     if (!pass) {
       return formatResponseError(res, 'Try Again Later!', 500);

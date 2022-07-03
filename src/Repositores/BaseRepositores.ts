@@ -1,10 +1,23 @@
-import { Sequelize } from 'sequelize';
+import { Model, Sequelize } from 'sequelize';
 import sequelizeConnection from '../Configs/DBConnection';
 
-abstract class BaseRepositores {
-  connection: Sequelize;
+export default abstract class BaseRepositores {
+  connection: Promise<Sequelize>;
 
-  constructor() {
-    this.connection = sequelizeConnection;
+  table: string;
+
+  model: Model;
+
+  constructor(
+    table: string,
+    model: Model,
+  ) {
+    this.connection = sequelizeConnection();
+    this.table = table;
+    this.model = model;
+  }
+
+  async getBtId() {
+    console.log('resultado');
   }
 }
