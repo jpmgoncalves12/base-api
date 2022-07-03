@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
-import { Dialect, Sequelize } from 'sequelize';
-import { SequelizeOptions } from 'sequelize-typescript';
+import { Dialect } from 'sequelize';
+import { Sequelize, SequelizeOptions } from 'sequelize-typescript';
 
 dotenv.config();
 
@@ -21,7 +21,6 @@ export default async () => {
     username: dbUser,
     password: dbPassword,
     port: dbPort,
-    models: [`${__dirname}/../models`],
   } as SequelizeOptions);
 
   await sequelizeConnection.sync({ force: false });

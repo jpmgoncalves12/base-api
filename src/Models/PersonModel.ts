@@ -1,25 +1,39 @@
 import {
-  Table, Model, Column, DataType,
+  Table, Column, DataType, Model,
 } from 'sequelize-typescript';
 
-@Table
-class Person extends Model {
-  @Column()
-    id: string;
+@Table({
+  tableName: 'persons',
+})
 
-  @Column()
-    name: string;
+class Persons extends Model {
+  @Column(
+    {
+      type: DataType.STRING,
+      primaryKey: true,
+    },
+  )
+    id!: string;
 
-  @Column({
-    type: DataType.DATEONLY,
-  })
-    born: Date;
+  @Column(
+    { type: DataType.STRING },
+  )
+    name!: string;
 
-  @Column
-    cpf: string;
+  @Column(
+    { type: DataType.DATEONLY },
+  )
+    born!: string;
 
-  @Column
-    gender: string;
+  @Column(
+    { type: DataType.STRING },
+  )
+    cpf!: string;
+
+  @Column(
+    { type: DataType.STRING },
+  )
+    gender!: string;
 }
 
-export default new Person();
+export default Persons;

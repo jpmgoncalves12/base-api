@@ -6,18 +6,18 @@ import encriptyPasswordService from '../Services/EncriptyPasswordService';
 import LoginRepositores from '../Repositores/LoginRepositores';
 
 class LoginAuthBusiness extends BaseBusiness {
-  process(req: Request, res: Response) {
-    LoginRepositores.getBtId();
-
+  async process(req: Request, res: Response) {
     const pass = encriptyPasswordService(req.body.password);
     if (!pass) {
       return formatResponseError(res, 'Try Again Later!', 500);
     }
 
+    const id = await LoginRepositores.getAccountLogin('jpmgoncalves12@gmail.com');
+
     const payload = {
       context: {
         user: {
-          ulid: '01G6S52KF72D3GZEK104A6FTZ4',
+          ulid: id,
           displayName: 'João',
           fullName: 'João Pedro Martins Gonçalves',
         },
