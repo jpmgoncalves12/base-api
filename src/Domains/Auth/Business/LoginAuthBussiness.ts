@@ -12,22 +12,24 @@ class LoginAuthBusiness extends BaseBusiness {
       return formatResponseError(res, 'Try Again Later!', 500);
     }
 
-    const id = await LoginRepositores.getAccountLogin('jpmgoncalves12@gmail.com');
+    const account = await LoginRepositores.getAccountLogin(req.body.email);
+    if (!account) {
+      return formatResponseError(res, 'Unauthorized!', 401);
+    }
 
     const payload = {
       context: {
         user: {
-          ulid: id,
-          displayName: 'João',
-          fullName: 'João Pedro Martins Gonçalves',
+          ulid: account.id,
+          displayName: account.name,
+          email: account.email,
         },
-        roles: ['admin', 'finalUser'],
       },
     };
 
     const token = generateJwtService(payload);
     if (!token) {
-      return formatResponseError(res, 'Try Again Later', 500);
+      return formatResponseError(res, 'Try Again Later, can`t generate the token!', 500);
     }
 
     const data = { Token: token };

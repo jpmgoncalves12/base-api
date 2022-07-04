@@ -3,11 +3,11 @@ import getToken from '../../../Configs/TokenConfig';
 
 export default function generateJwtService(
   payload: object,
-) {
+): false | string {
   const token = getToken();
 
   if (!token) {
-    return '';
+    return false;
   }
 
   const signInOptions: SignOptions = {

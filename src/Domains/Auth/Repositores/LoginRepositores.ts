@@ -4,7 +4,7 @@ import PersonModel from '../../../Models/PersonModel';
 class LoginRepositores extends BaseRepositores {
   async getAccountLogin(
     email: string,
-  ): Promise<string> {
+  ): Promise<false | PersonModel> {
     (await this.connection).addModels([PersonModel]);
 
     const result = await PersonModel.findOne({
@@ -12,10 +12,10 @@ class LoginRepositores extends BaseRepositores {
     });
 
     if (!result) {
-      return '';
+      return false;
     }
 
-    return result.id;
+    return result;
   }
 }
 

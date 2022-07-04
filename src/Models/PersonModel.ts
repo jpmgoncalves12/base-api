@@ -34,6 +34,11 @@ class Persons extends Model {
     { type: DataType.STRING },
   )
     gender!: string;
+
+  @Column(
+    { type: DataType.STRING },
+  )
+    email!: string;
 }
 
 export default Persons;
