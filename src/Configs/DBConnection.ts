@@ -21,6 +21,9 @@ export default async () => {
     username: dbUser,
     password: dbPassword,
     port: dbPort,
+    define: {
+      timestamps: false,
+    },
   } as SequelizeOptions);
 
   await sequelizeConnection.sync({ force: false });

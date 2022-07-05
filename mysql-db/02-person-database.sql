@@ -1,12 +1,21 @@
-CREATE TABLE `persons` (
-  `id` varchar(26) NOT NULL,
+CREATE TABLE `users` (
+  `id` varchar(26) NOT NULL UNIQUE,
   `name` varchar(64) NOT NULL,
-  `born` date DEFAULT NULL,
-  `cpf` varchar(11) DEFAULT NULL,
-  `gender` varchar(16) NOT NULL,
-  `createdAt` timestamp NULL DEFAULT NULL,
-  `updatedAt` timestamp NULL DEFAULT NULL,
-  `email` varchar(100) NOT NULL,
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `person_cpf_IDX` (`cpf`) USING BTREE
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+  `email` varchar(100) NOT NULL UNIQUE,
+  `password` varchar(64) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
+
+
+
+-- Password: Test1234
+
+INSERT INTO
+  base_api.users (id, name, email, password)
+VALUES
+  (
+    '01G75V6RSB2796MJ1A1RJ0KWG4',
+    'Jhonny Deep',
+    'teste@email.com',
+    '31df522655f791eb3ee96379e020a797672236b7fa298d1413d904e1d762ba2a'
+  );

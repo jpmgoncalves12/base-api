@@ -3,10 +3,10 @@ import {
 } from 'sequelize-typescript';
 
 @Table({
-  tableName: 'persons',
+  tableName: 'users',
 })
 
-class Persons extends Model {
+class Users extends Model {
   @Column(
     {
       type: DataType.STRING,
@@ -21,24 +21,14 @@ class Persons extends Model {
     name!: string;
 
   @Column(
-    { type: DataType.DATEONLY },
-  )
-    born!: string;
-
-  @Column(
-    { type: DataType.STRING },
-  )
-    cpf!: string;
-
-  @Column(
-    { type: DataType.STRING },
-  )
-    gender!: string;
-
-  @Column(
     { type: DataType.STRING },
   )
     email!: string;
+
+  @Column(
+    { type: DataType.STRING },
+  )
+    password!: string;
 }
 
-export default Persons;
+export default Users;

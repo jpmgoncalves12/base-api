@@ -11,7 +11,7 @@ export default function encriptyPasswordService(
     return '';
   }
 
-  const key = pbkdf2.pbkdf2Sync(password, passwordSalt, 10, 64, 'sha512');
+  const key = pbkdf2.pbkdf2Sync(password, passwordSalt, 10, 32, 'sha512');
 
   return key.toString('hex');
 }

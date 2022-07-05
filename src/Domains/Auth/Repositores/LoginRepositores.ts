@@ -1,13 +1,13 @@
 import BaseRepositores from '../../../Repositores/BaseRepositores';
-import PersonModel from '../../../Models/PersonModel';
+import UserModel from '../../../Models/UsersModel';
 
 class LoginRepositores extends BaseRepositores {
   async getAccountLogin(
     email: string,
-  ): Promise<false | PersonModel> {
-    (await this.connection).addModels([PersonModel]);
+  ): Promise<false | UserModel> {
+    (await this.connection).addModels([UserModel]);
 
-    const result = await PersonModel.findOne({
+    const result = await UserModel.findOne({
       where: { email },
     });
 

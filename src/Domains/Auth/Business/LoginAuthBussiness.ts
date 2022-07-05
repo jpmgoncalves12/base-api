@@ -18,13 +18,14 @@ class LoginAuthBusiness extends BaseBusiness {
     }
 
     const payload = {
-      context: {
-        user: {
-          ulid: account.id,
-          displayName: account.name,
-          email: account.email,
-        },
+      user: {
+        ulid: account.id,
+        name: account.name,
+        email: account.email,
       },
+      roles: [
+        'admin',
+      ],
     };
 
     const token = generateJwtService(payload);
