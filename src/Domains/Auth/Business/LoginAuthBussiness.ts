@@ -12,9 +12,12 @@ class LoginAuthBusiness extends BaseBusiness {
       return formatResponseError(res, 'Try Again Later!', 500);
     }
 
-    const account = await LoginRepositores.getAccountLogin(req.body.email);
+    const account = await LoginRepositores.getAccountLogin(
+      req.body.email,
+      pass,
+    );
     if (!account) {
-      return formatResponseError(res, 'Unauthorized!', 401);
+      return formatResponseError(res, 'Incorrect Credentials!', 401);
     }
 
     const payload = {

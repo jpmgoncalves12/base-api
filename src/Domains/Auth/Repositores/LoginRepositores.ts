@@ -4,11 +4,15 @@ import UserModel from '../../../Models/UsersModel';
 class LoginRepositores extends BaseRepositores {
   async getAccountLogin(
     email: string,
+    password: string,
   ): Promise<false | UserModel> {
     (await this.connection).addModels([UserModel]);
 
     const result = await UserModel.findOne({
-      where: { email },
+      where: {
+        email,
+        password,
+      },
     });
 
     if (!result) {
