@@ -36,7 +36,7 @@ class LoginAuthBusiness extends BaseBusiness {
       return formatResponseError(res, 'Try Again Later, can`t generate the token!', 500);
     }
 
-    const data = { Token: token };
+    const data = { token };
     return formatResponseSuccess(res, data, 'Success Login!');
   }
 }
