@@ -1,7 +1,7 @@
 import BaseRepositores from '../../../Repositores/BaseRepositores';
 import UserModel from '../../../Models/UsersModel';
 
-class LoginRepositores extends BaseRepositores {
+class LoginAuthRepositores extends BaseRepositores {
   async getAccountLogin(
     email: string,
     password: string,
@@ -23,4 +23,4 @@ class LoginRepositores extends BaseRepositores {
   }
 }
 
-export default new LoginRepositores();
+export default new LoginAuthRepositores();

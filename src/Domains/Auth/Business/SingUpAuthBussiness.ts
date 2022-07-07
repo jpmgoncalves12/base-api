@@ -3,38 +3,32 @@ import BaseBusiness from '../../../Business/BaseBusiness';
 // import generateJwtService from '../Services/GenerateJwtService';
 import { formatResponseSuccess, formatResponseError } from '../../../Utils/ResponseUtils';
 import encriptyPasswordService from '../Services/EncriptyPasswordService';
-// import LoginRepositores from '../Repositores/LoginRepositores';
+import SingUpAuthRepositores from '../Repositores/SingUpAuthRepositores';
 
-class LoginAuthBusiness extends BaseBusiness {
+class SingUpAuthBusiness extends BaseBusiness {
   async process(req: Request, res: Response) {
     const pass = encriptyPasswordService(req.body.password);
     if (!pass) {
       return formatResponseError(res, 'Try Again Later!', 500);
     }
 
-    // const account = await LoginRepositores.getAccountLogin(req.body.email);
-    // if (!account) {
-    //   return formatResponseError(res, 'Unauthorized!', 401);
-    // }
+    const isEmailExist = await SingUpAuthRepositores.isEmailExist(req.body.email);
+    if (isEmailExist) {
+      return formatResponseError(res, 'Email is already exist!', 401);
+    }
 
-    // const payload = {
-    //   context: {
-    //     user: {
-    //       ulid: account.id,
-    //       displayName: account.name,
-    //       email: account.email,
-    //     },
-    //   },
-    // };
+    const createAccount = await SingUpAuthRepositores.setUser(
+      req.body.name,
+      req.body.email,
+      pass,
+    );
 
-    // const token = generateJwtService(payload);
-    // if (!token) {
-    //   return formatResponseError(res, 'Try Again Later, can`t generate the token!', 500);
-    // }
+    if (!createAccount) {
+      return formatResponseError(res, 'DB Error to create a new user, try again later!', 500);
+    }
 
-    // const data = { Token: token };
-    return formatResponseSuccess(res, { pass }, 'Success Singed Up!');
+    return formatResponseSuccess(res, { message: 'Singed Up Successful! User Created' });
   }
 }
 
-export default LoginAuthBusiness;
+export default SingUpAuthBusiness;

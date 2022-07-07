@@ -3,7 +3,7 @@ import BaseBusiness from '../../../Business/BaseBusiness';
 import generateJwtService from '../Services/GenerateJwtService';
 import { formatResponseSuccess, formatResponseError } from '../../../Utils/ResponseUtils';
 import encriptyPasswordService from '../Services/EncriptyPasswordService';
-import LoginRepositores from '../Repositores/LoginRepositores';
+import LoginAuthRepositores from '../Repositores/LoginAuthRepositores';
 
 class LoginAuthBusiness extends BaseBusiness {
   async process(req: Request, res: Response) {
@@ -12,7 +12,7 @@ class LoginAuthBusiness extends BaseBusiness {
       return formatResponseError(res, 'Try Again Later!', 500);
     }
 
-    const account = await LoginRepositores.getAccountLogin(
+    const account = await LoginAuthRepositores.getAccountLogin(
       req.body.email,
       pass,
     );

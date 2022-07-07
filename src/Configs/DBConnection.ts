@@ -12,8 +12,6 @@ const dbPort = Number(process.env.DB_PORT);
 const dbPassword = process.env.DB_PASSWORD;
 
 export default async () => {
-  console.log('[DB] Iniciando conexão com o banco de dados...');
-
   const sequelizeConnection = new Sequelize({
     host: dbHost,
     dialect: dbDriver,
@@ -22,7 +20,7 @@ export default async () => {
     password: dbPassword,
     port: dbPort,
     define: {
-      timestamps: false,
+      timestamps: true,
     },
   } as SequelizeOptions);
 

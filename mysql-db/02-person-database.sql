@@ -3,13 +3,10 @@ CREATE TABLE `users` (
   `name` varchar(64) NOT NULL,
   `email` varchar(100) NOT NULL UNIQUE,
   `password` varchar(64) NOT NULL,
-  PRIMARY KEY (`id`)
+  PRIMARY KEY (`id`) UNIQUE KEY `email` (`email`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci;
 
-
-
 -- Password: Test1234
-
 INSERT INTO
   base_api.users (id, name, email, password)
 VALUES
