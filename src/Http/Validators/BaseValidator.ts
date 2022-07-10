@@ -1,4 +1,11 @@
 import validator from 'validator';
+import { isULID } from '@yuzu441/is-ulid';
+
+export function ULIDValidation(
+  data: string,
+): boolean {
+  return isULID(data);
+}
 
 export function nameValidation(
   data: string,

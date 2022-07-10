@@ -1,6 +1,5 @@
 import { Request, Response } from 'express';
 import BaseBusiness from '../../../Business/BaseBusiness';
-// import generateJwtService from '../Services/GenerateJwtService';
 import { formatResponseSuccess, formatResponseError } from '../../../Utils/ResponseUtils';
 import encriptyPasswordService from '../Services/EncriptyPasswordService';
 import SingUpAuthRepositores from '../Repositores/SingUpAuthRepositores';

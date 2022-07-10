@@ -20,5 +20,6 @@ module.exports = {
     'import/no-unresolved': 'off',
     'default-param-last': 'off',
     'operator-linebreak': ['error', 'after'],
+    'no-plusplus': 'off',
   },
 };
