@@ -13,7 +13,7 @@ class UserAuthBusiness extends BaseBusiness {
       return formatResponseError(res, 'DB Error to search user, try again later!', 500);
     }
 
-    return formatResponseSuccess(res, { user });
+    return formatResponseSuccess(res, user);
   }
 }
 
